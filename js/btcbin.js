@@ -372,13 +372,15 @@ var btcbin = {
 					markup += "Balance:<br>" + wallet.amount +" BTC" + br + br;
 					markup += "Address:<Br>" + wallet.addr + br + br;
 					
+					markup += btcbin.qrCode.createTableHtml(wallet.addr)+ br + br;
+					
+					
 					markup += "Private Key:" + br;
 					markup += wallet.key.substr(0,26) + br;
 					markup += wallet.key.substr(26) + br + br;
-
-					markup += btcbin.qrCode.createTableHtml(wallet.addr)+ br;
+			
 					
-					//markup += btcbin.qrCode.createTableHtml(wallet.key)+ br;
+					markup += btcbin.qrCode.createTableHtml(wallet.key)+ br;
 						
 					$header.find( "h1" ).html( wallet.title );
 					$content.html( markup )

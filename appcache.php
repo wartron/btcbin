@@ -1,12 +1,8 @@
 <?php
 
-
 header('Content-Type: text/cache-manifest');
+
 header('Cache-Control: no-cache');
-
-
-
-
 
 $files = array(
 'index.html',
@@ -24,22 +20,21 @@ $files = array(
 'js/strings.js');
 
 
-
 echo "CACHE MANIFEST\n";
 echo "\nCACHE:\n";
 
 
 $hashes = "";
 foreach($files as $file){
-	$hashes += md5_file("./".$file);
-	echo "/".$file."\n";
+	$hashes .= md5_file("./".$file);
+	//echo "#".$hashes."\n";
+	echo $file."\n";
 }
 
 echo "\nNETWORK:\n";
 echo '*' . "\n";
 
-
 echo "\n# " . md5($hashes) . "\n";
 
 // FOR TESTING
-//echo '# ' . date("n/j/Y h:i");
+echo '# ' . date("n/j/Y h:i:m:s");
