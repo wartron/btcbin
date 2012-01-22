@@ -26,8 +26,9 @@ echo "\nCACHE:\n";
 
 $hashes = "";
 foreach($files as $file){
-	$hashes .= md5_file("./".$file);
-	//echo "#".$hashes."\n";
+	$x = md5_file("./".$file);
+	$hashes .= $x;
+	//echo "#".$x."\n";
 	echo $file."\n";
 }
 
@@ -37,4 +38,4 @@ echo '*' . "\n";
 echo "\n# " . md5($hashes) . "\n";
 
 // FOR TESTING
-echo '# ' . date("n/j/Y h:i:m:s");
+//echo '# ' . date("n/j/Y h:i:m:s");

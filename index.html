@@ -1,5 +1,5 @@
 <!DOCTYPE html> 
-<html manifest="appcache.php">   <!-- <html manifest="appcache.php"> -->
+<html>   <!-- <html manifest="appcache.php"> -->
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="content-type">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> 
@@ -107,6 +107,12 @@ Deleting: hide*, fully remove
 preformance: qr codes? html*, canvas
 </pre>
 
+	<fieldset class="ui-grid-a">
+		<div class="ui-block-a"><a href="#" id="import" data-role="button" data-theme="c" rel="localize[settings.import]"></a></div>
+		<div class="ui-block-b"><a href="#" id="export" data-role="button" data-theme="c" rel="localize[settings.export]"></a></div>	   
+	</fieldset>	
+
+
 <a href="#" id="droptables" data-role="button" data-theme="c" rel="localize[settings.droptable]"></a>
 	</div>
 </div>
@@ -161,6 +167,15 @@ preformance: qr codes? html*, canvas
 
 		</form>
 		<a id="cmd_generate" data-role="button" data-theme="b" rel="localize[gen.generate]"></a>
+	</div>
+</div>
+
+<div data-role="page" id="export">
+	<div data-role="header" >		
+		<h1 rel="localize[export.title]"></h1>
+	</div>
+	<div data-role="content" >
+		<textarea id="textarea" id="textarea-a"></textarea>
 	</div>
 </div>
 

@@ -5,6 +5,20 @@ var btcbin = {
 		$("#droptables").click(function (){
 			btcbin.db.drop();
 		});
+		$("#export").click(function (){
+			btcbin.db.getall({},function(results){
+				var all = []
+				$.each(results.rows,function( rowIndex ){
+					var row = results.rows.item( rowIndex );
+					all.push(row);
+					
+				});
+				var json = JSON.stringify(all);
+				$("#textarea").val(json);
+				$.mobile.changePage( "#export",{ role: "dialog"});
+				
+			});
+		});
 	
 	
 		$(".langselector a").live('click',function(e){
@@ -518,11 +532,11 @@ $(document).ready(function () {
 	$.mobile.defaultPageTransition = 'slide'	
 	
 	window.applicationCache.addEventListener('updateready', function(e) {
-		if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
-			window.applicationCache.swapCache();
-			//if (confirm('A new version of this site is available. Load it?')) {
-			window.location.reload();
-			//}
+		if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {			
+			if (confirm('A new version of this site is available. Load it?')) {
+				window.applicationCache.swapCache();
+				window.location.reload();
+			}
 		}
 	}, false);
 
