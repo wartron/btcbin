@@ -1,0 +1,168 @@
+<!DOCTYPE html> 
+<html manifest="appcache.php">   <!-- <html manifest="appcache.php"> -->
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> 
+<title>BTCBin: Offline Bitcoin Wallet</title>	
+<link href="css/latest.jquery.mobile.min.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery-1.6.4.min.js"></script>
+<script src="js/latest.jquery.mobile.min.js"></script>
+<script src="js/jquery.Storage.js"></script>
+<script src="js/bitaddress.org.js"></script>	
+<script src="js/strings.js"></script>
+<script src="js/btcbin.js"></script>
+<style type="text/css">
+.qrcode_table { border-width: 0px; border-style: none; border-color: #0000ff; border-collapse: collapse; }
+.qrcode_tddark { border-width: 0px; border-style: none; border-color: #0000ff; border-collapse: collapse; padding: 0; margin: 0; width: 2px; height: 2px; background-color: #000000; }
+.qrcode_tdlight { border-width: 0px; border-style: none; border-color: #0000ff; border-collapse: collapse; padding: 0; margin: 0; width: 2px; height: 2px; background-color: #ffffff; }    
+
+.fullwidth{margin: .6em 10% .8em !important;}
+</style>
+</head>
+<body> 
+<div data-role="page" id="root">
+	<div data-role="header" >
+		<h1 class="fullwidth">BTCBin: Offline Bitcoin Wallet</h1>
+	</div>
+	<div data-role="content">	
+		<h3>Select a language</h3>
+		<h3>Seleccionar el idioma</h3>
+		<h3>S&eacute;lectionnez la langue</h3>
+		<h3>W&auml;hlen Sie die Sprache</h3>
+			<center>
+			<div data-role="controlgroup" data-type="horizontal" class="langselector">
+				<a href="#" data-role="button" lang="en">EN</a>
+				<a href="#" data-role="button" lang="es">ES</a>
+				<a href="#" data-role="button" lang="de">DE</a>
+				<a href="#" data-role="button" lang="fr">FR</a>
+			</div>
+			<center>
+	</div>	
+</div>
+<div data-role="page" id="tos">
+	<div data-role="header" >
+		<a href="#" data-icon="delete"  data-rel="back" data-iconpos="notext" data-iconpos="bottom" rel="lxocalize[nav.cancel]"></a>
+		<h1 rel="localize[tos.title]"></h1>
+		<!--<a href="#form?id=0" data-icon="check" data-theme="b" rel="localize[nav.accept]"></a>-->
+	</div>
+	<div data-role="content">
+		<p rel="localize[tos]"></p>		
+		<fieldset class="ui-grid-a">
+			<div class="ui-block-a"><a href="#" data-role="button" data-icon="delete"  data-rel="back" data-theme="c" rel="localize[nav.cancel]"></a></div>
+			<div class="ui-block-b"><a href="#home" data-role="button" data-icon="check" data-theme="b" rel="localize[nav.accept]"></a></div>	   
+		</fieldset>	
+		
+	</div>
+
+</div>
+<div data-role="page" id="home">
+	<div data-role="header" >		
+		<h1 class="fullwidth" rel="localize[home.title]"></h1>		
+	</div>
+	<div data-role="content">
+		<fieldset class="ui-grid-a">
+			<div class="ui-block-a"><a href="#list" data-role="button" data-theme="c" rel="localize[list.link]"></a></div>
+			<div class="ui-block-b"><a href="#generate" data-rel="dialog" data-role="button" data-theme="c" rel="localize[generate.link]"></a></div>	   
+		</fieldset>		
+		<fieldset class="ui-grid-a">
+			<div class="ui-block-a"><a href="#about" data-role="button" data-theme="c" rel="localize[about.link]"></a></div>
+			<div class="ui-block-b"><a href="#settings" data-role="button" data-theme="c" rel="localize[settings.link]"></a></div>	   
+		</fieldset>	
+		<h3 rel="localize[home.favorites]"></h3>
+		<ul data-role="listview" data-inset="true" id="favlist">
+
+		</ul>
+	</div>
+
+</div>
+
+<div data-role="page" id="about">
+	<div data-role="header" >
+		<a href="#" data-icon="delete"  data-rel="back" data-iconpos="notext" data-iconpos="bottom" rel="lxocalize[nav.back]"></a>
+		<h1 rel="localize[about.title]"></h1>
+	</div>
+	<div data-role="content" >
+		ABOUT
+	</div>
+</div>
+
+<div data-role="page" id="settings">
+	<div data-role="header" >
+		<a href="#" data-icon="delete"  data-rel="back" data-iconpos="notext" data-iconpos="bottom" rel="lxocalize[nav.back]"></a>
+		<h1 rel="localize[settings.title]"></h1>
+	</div>
+	<div data-role="content" >
+<pre>
+display: show 0 btc balances.
+
+default lang
+
+skip lang selector
+
+skip tos
+
+	
+Deleting: hide*, fully remove
+	
+preformance: qr codes? html*, canvas
+</pre>
+
+<a href="#" id="droptables" data-role="button" data-theme="c" rel="localize[settings.droptable]"></a>
+	</div>
+</div>
+
+<div data-role="page" id="list">
+	<div data-role="header" >
+		<a href="#" data-icon="delete"  data-rel="back" data-iconpos="notext" data-iconpos="bottom" rel="lxocalize[nav.back]"></a>
+		<h1 rel="localize[list.title]"></h1>
+	</div>
+	<div data-role="content" >
+		<div data-role="collapsible-set" data-theme="c" data-content-theme="d">
+			<div data-role="collapsible" data-collapsed="false">
+				<h3>Active</h3>
+				<ul data-role="listview"  id="walletlist">		
+				</ul>
+			</div>
+			<div data-role="collapsible">
+				<h3>Inactive</h3>
+				<ul data-role="listview" id="deadlist">		
+				</ul>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+<div data-role="page" id="view">
+	<div data-role="header" >
+		<a href="#" data-icon="delete"  data-rel="back" data-iconpos="notext" data-iconpos="bottom" rel="lxocalize[nav.back]"></a>
+		<h1 rel="localize[view.title]"></h1>
+	</div>
+	<div data-role="content" ></div>
+</div>
+
+<div data-role="page" id="generate">
+	<div data-role="header" >		
+		<h1 rel="localize[generate.title]"></h1>
+	</div>
+	<div data-role="content" >
+		<form>
+			<label for="gentitle" rel="localize[gen.title]"></label>
+			<input type="text" name="gentitle" id="gentitle" value="" />
+			
+			<label for="genamount"  rel="localize[gen.amount]"></label>
+			<input type="number" name="genamount" id="genamount" value="0" min="0" step="0.1">
+			
+			<fieldset data-role="controlgroup" >
+			   <div role="heading" class="ui-controlgroup-label" rel="localize[gen.flags]"></div>
+			   <input type="checkbox" name="genfav" id="genfav" />
+			   <label for="genfav" rel="localize[gen.favorite]"></label>
+			</fieldset>
+
+		</form>
+		<a id="cmd_generate" data-role="button" data-theme="b" rel="localize[gen.generate]"></a>
+	</div>
+</div>
+
+</body>
+</html>
