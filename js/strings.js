@@ -22,9 +22,6 @@ var strings = {
 		'gen.favorite':'Favorite',
 		'gen.generate':'Generate',
 		
-		'view.title':'Loading...',	
-		
-		
 		'list.title':'All Wallets',		
 		
 		'about.title':'About BTCBIN',
