@@ -1,6 +1,6 @@
 var strings = {
 	'en':{
-	
+		'selectlang':'Select a language',
 		'nav.accept':'Accept',
 		'nav.cancel':'Cancel',
 		'nav.back':'Back',
@@ -45,11 +45,12 @@ var strings = {
 		'email':'Email',
 		
 		
-				
+		
 
 		
 	},
 	'es':{			
+		'selectlang':'Seleccionar el idioma',
 		'nav.accept':'Aceptar',
 		'nav.cancel':'Cancelar',
 		'nav.back':'Volver',
@@ -59,6 +60,7 @@ var strings = {
 	
 	},
 	'de':{
+		'selectlang':'W&auml;hlen Sie die Sprache',
 		'nav.accept':'Akzeptieren',
 		'nav.cancel':'Stornieren',
 		'nav.back':'Zur&uuml;ck',
@@ -68,6 +70,7 @@ var strings = {
 	
 	},
 	'fr':{
+		'selectlang':'S&eacute;lectionnez la langue',
 		'nav.accept':'D\'accord',
 		'nav.cancel':'Annuler',
 		'nav.back':'Retour',

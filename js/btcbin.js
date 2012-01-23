@@ -3,9 +3,25 @@ var btcbin = {
 	lang: "en",
 	viewing: null,
 	init: function(){	
+		//lang selector at start
+		$(".langselector a").live('click',function(e){
+			nlang = $(this).attr("lang");
+			if(btcbin.lang != nlang){
+				btcbin.lang = nlang;
+				btcbin.localize();
+			}
+			$.mobile.changePage( "#tos",{changeHash: false});		
+		});		
+		
+	
+	
+		//dev function. on page #dev
 		$("#droptables").click(function (){
 			btcbin.db.drop();
 		});
+		
+		
+		//export functions
 		$("#export").click(function (){
 			btcbin.db.getall({},function(results){
 				var all = []
@@ -15,21 +31,24 @@ var btcbin = {
 					
 				});
 				var json = JSON.stringify(all);
-				$("#textarea").val(json);
+				$("#exportarea").val(json);
 				$.mobile.changePage( "#export",{ role: "dialog"});
 				
 			});
 		});
 		$("#cmd_exportemail").click(function (){
-			var json=$("#textarea").val();
+			var json=$("#exportarea").val();
 			window.location.href = "mailto:?subject=BTCBIN.bk&body="+json;
 		});
 		
 		
+		//qrlinks
 		$(".qrlink").click(function (){
 			var qrsrc = $(this).attr('qrsrc');
 			btcbin.views.qr($("#"+qrsrc).val())
 		});
+		
+		//the fav button in the top right when viewing a addrss
 		$("#viewfav").click(function (){
 			var id = $(this).attr("wid"),
 				fav = $(this).attr("fav"),
@@ -45,20 +64,15 @@ var btcbin = {
 			}
 			
 		});
-		$(".langselector a").live('click',function(e){
-			nlang = $(this).attr("lang");
-			if(btcbin.lang != nlang){
-				btcbin.lang = nlang;
-				btcbin.localize();
-			}
-			$.mobile.changePage( "#tos",{changeHash: false});		
-		});		
 		
+/*
 		$("#cmd_edit").click(function (){
 		//	$.mobile.changePage( "#edit",{changeHash: false});
 		//	btcbin.views.walletedit();
 		});
+*/
 		
+		//for the delete confirm page
 		$("#cmd_deldel").click(function (){
 			if(btcbin.viewing){
 				btcbin.db.deletewallet(btcbin.viewing,function(res){
@@ -68,6 +82,7 @@ var btcbin = {
 				});
 			}
 		});
+		//for the delete confirm page
 		$("#cmd_delhide").click(function (){
 			if(btcbin.viewing){
 				btcbin.db.hidewallet(btcbin.viewing,function(res){
@@ -76,6 +91,9 @@ var btcbin = {
 				});
 			}
 		});
+		
+		
+		//for the edit page
 		$("#cmd_save").click(function (){
 			var id = btcbin.viewing,
 				title = $("#edittitle").val(),
@@ -111,6 +129,8 @@ var btcbin = {
 			});
 				
 		});
+		
+		//for the generate page
 		$("#cmd_generate").click(function (){
 			$.mobile.showPageLoadingMsg();  
 			setTimeout(function() { 
@@ -513,16 +533,13 @@ var btcbin = {
 			$content.html(btcbin.qrCode.createTableHtml(str));
 			var table = $content.find("table")
 			//table.width("100%");
-			setTimeout(function(){
+			setTimeout(function(){//fit the qr after the dialog is open
 				var h = table.parent().width();
 				table.width(h);
 				table.height(h);
 			},500);
 			
-		
-			//table.height("470px");
-			
-			//if(fid="
+
 			
 		},
 		walletedit: function(){
@@ -749,8 +766,7 @@ $(document).ready(function () {
 	window.applicationCache.addEventListener('updateready', function(e) {
 		if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
 			window.applicationCache.swapCache();
-			if (confirm('A new version of this site is available. Load it?')) {
-				
+			if (confirm('A new version of this site is available. Load it?')) {				
 				window.location.reload();
 			}
 		}
@@ -763,6 +779,8 @@ $(document).ready(function () {
 		if(lastView){		
 			lastView= false;
 			//btcbin.viewing = null;
+			
+			
 			/*
 			var $page = $( "#view" ),
 				$header = $page.children( ":jqmData(role=header)" ),
@@ -780,7 +798,6 @@ $(document).ready(function () {
 	});
 	
 	
-
 	
 	/*
 	
@@ -796,28 +813,22 @@ $(document).ready(function () {
 	btcbin.init();
 });
 
-function a(){
-alert('a');
-}
-
-
-
 		
-	$( document ).bind("pagebeforechange", function() {
-		//console.log("agebeforechange");
+$( document ).bind("pagebeforechange", function() {
+	//console.log("agebeforechange");
+});
+
+
+$( document ).delegate(".delwallet", "click", function(e) {
+	var id = $(this).attr("wid");
+	btcbin.db.hidewallet(id,function(res){
+		$(".wid"+id).remove();
 	});
+});	
+
+$( document ).delegate(".viewallet", "click", function(e) {
+	var id = $(this).attr("wid"),
+		url = "#view?id="+id;
 	
-	
-	$( document ).delegate(".delwallet", "click", function(e) {
-		var id = $(this).attr("wid");
-		btcbin.db.hidewallet(id,function(res){
-			$(".wid"+id).remove();
-		});
-	});	
-	
-	$( document ).delegate(".viewallet", "click", function(e) {
-		var id = $(this).attr("wid"),
-			url = "#view?id="+id;
-		
-		$.mobile.changePage(url,{dataUrl:url});
-	});	
+	$.mobile.changePage(url,{dataUrl:url});
+});	
