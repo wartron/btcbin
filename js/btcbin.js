@@ -20,6 +20,12 @@ var btcbin = {
 				
 			});
 		});
+		$("#cmd_exportemail").click(function (){
+			var json=$("#textarea").val();
+			window.location.href = "mailto:?subject=BTCBIN.bk&body="+json;
+		});
+		
+		
 		$(".qrlink").click(function (){
 			var qrsrc = $(this).attr('qrsrc');
 			btcbin.views.qr($("#"+qrsrc).val())
