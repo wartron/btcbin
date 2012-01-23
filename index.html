@@ -157,13 +157,13 @@ preformance: qr codes? html*, canvas
 		<div data-role="collapsible-set" data-content-theme="d">		
 			<div data-role="collapsible" data-collapsed="false" >
 				<h3 rel="localize[addr]"></h3>
-				<textarea name="viewaddr" id="viewaddr"></textarea>
-				<a href="#about" data-role="button" data-theme="c" rel="localize[qrcode]"></a>
+				<textarea name="viewaddr" id="viewaddr" readonly="readonly"></textarea>
+				<a href="#" class="qrlink" qrsrc="viewaddr" data-rel="dialog" data-role="button" data-theme="c" rel="localize[qrcode]"></a>
 			</div>
 			<div data-role="collapsible">
 				<h3 rel="localize[key]"></h3>
-				<textarea name="viewkey" id="viewkey"></textarea>
-				<a href="#about" data-role="button" data-theme="c" rel="localize[qrcode]"></a>
+				<textarea name="viewkey" id="viewkey" readonly="readonly"></textarea>
+				<a href="#" class="qrlink" qrsrc="viewkey" data-role="button" data-theme="c" rel="localize[qrcode]"></a>
 			</div>
 		</div>
 		<div data-role="controlgroup">
@@ -172,6 +172,15 @@ preformance: qr codes? html*, canvas
 		</div>
 	</div>
 </div>
+<div data-role="dialog" id="qr">
+	<div data-role="header" >		
+		<h1></h1>
+	</div>
+	<div data-role="content" >
+				
+	</div>
+</div>
+
 <div data-role="dialog" id="confirmdel">
 	<div data-role="header" >		
 		<h1 rel="localize[delete.title]"></h1>
