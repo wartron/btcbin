@@ -2,7 +2,7 @@
 <html>   <!-- <html manifest="appcache.php"> -->
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
 <title>BTCBin: Offline Bitcoin Wallet</title>	
 <link href="css/latest.jquery.mobile.min.css" rel="stylesheet" type="text/css" />
 <script src="js/jquery-1.6.4.min.js"></script>
@@ -17,6 +17,8 @@
 .qrcode_tdlight { border-width: 0px; border-style: none; border-color: #0000ff; border-collapse: collapse; padding: 0; margin: 0; width: 2px; height: 2px; background-color: #ffffff; }    
 .fullwidth{margin: .6em 10% .8em !important;}
 #walletlist,#deadlist{margin:-16px -16px -11px -16px !important;}
+.sml{font-size:0.8em}
+.viewfav{margin:-15px 0;float:right;}
 </style>
 </head>
 <body> 
@@ -63,12 +65,12 @@
 	</div>
 	<div data-role="content">
 		<fieldset class="ui-grid-a">
-			<div class="ui-block-a"><a href="#list" data-role="button" data-theme="c" rel="localize[list.link]"></a></div>
-			<div class="ui-block-b"><a href="#generate" data-rel="dialog" data-role="button" data-theme="c" rel="localize[generate.link]"></a></div>	   
+			<div class="ui-block-a"><a href="#list" data-role="button" data-theme="c" rel="localize[list]"></a></div>
+			<div class="ui-block-b"><a href="#generate" data-rel="dialog" data-role="button" data-theme="c" rel="localize[generate]"></a></div>	   
 		</fieldset>		
 		<fieldset class="ui-grid-a">
 			<div class="ui-block-a"><a href="#about" data-role="button" data-theme="c" rel="localize[about.link]"></a></div>
-			<div class="ui-block-b"><a href="#settings" data-role="button" data-theme="c" rel="localize[settings.link]"></a></div>	   
+			<div class="ui-block-b"><a href="#settings" data-role="button" data-theme="c" rel="localize[settings]"></a></div>	   
 		</fieldset>	
 		<h3 rel="localize[home.favorites]"></h3>
 		<ul data-role="listview" data-inset="true" id="favlist">
@@ -83,9 +85,7 @@
 		<a href="#" data-icon="delete"  data-rel="back" data-iconpos="notext" data-iconpos="bottom" rel="lxocalize[nav.back]"></a>
 		<h1 rel="localize[about.title]"></h1>
 	</div>
-	<div data-role="content" >
-		ABOUT
-	</div>
+
 </div>
 
 <div data-role="page" id="settings">
@@ -122,7 +122,7 @@ preformance: qr codes? html*, canvas
 <div data-role="page" id="list">
 	<div data-role="header" >
 		<a href="#" data-icon="delete"  data-rel="back" data-iconpos="notext" data-iconpos="bottom" rel="lxocalize[nav.back]"></a>
-		<h1 rel="localize[list.title]"></h1>
+		<h1 rel="localize[list]"></h1>
 	</div>
 	<div data-role="content" >
 		<div data-role="collapsible-set" data-theme="c" data-content-theme="d">
@@ -144,31 +144,98 @@ preformance: qr codes? html*, canvas
 <div data-role="page" id="view">
 	<div data-role="header" >
 		<a href="#" data-icon="delete"  data-rel="back" data-iconpos="notext" data-iconpos="bottom" rel="lxocalize[nav.back]"></a>
-		<h1 rel="localize[view.title]"></h1>
+		<h1 rel="localize[wallet.title]"></h1>
 	</div>
-	<div data-role="content" ></div>
+	<div data-role="content" >
+		<div>
+			<span><span rel="localize[amount]"></span> <span id="viewamount">x</span> BTC</span>
+			<span class="viewfav">	
+				<a href="#" id="viewfav" data-role="button" data-theme="e" data-icon="star" data-iconpos="notext" rel="localize[view.favorite]"></a>
+				
+			</span>
+		</div>
+		<div data-role="collapsible-set" data-content-theme="d">		
+			<div data-role="collapsible" data-collapsed="false" >
+				<h3 rel="localize[addr]"></h3>
+				<textarea name="viewaddr" id="viewaddr"></textarea>
+				<a href="#about" data-role="button" data-theme="c" rel="localize[qrcode]"></a>
+			</div>
+			<div data-role="collapsible">
+				<h3 rel="localize[key]"></h3>
+				<textarea name="viewkey" id="viewkey"></textarea>
+				<a href="#about" data-role="button" data-theme="c" rel="localize[qrcode]"></a>
+			</div>
+		</div>
+		<div data-role="controlgroup">
+			<a href="#edit" id="cmd_edit" data-role="button" data-theme="c" rel="localize[edit]"></a>
+			<a href="#confirmdel" data-role="button" data-theme="c" rel="localize[delete]"></a>
+		</div>
+	</div>
+</div>
+<div data-role="dialog" id="confirmdel">
+	<div data-role="header" >		
+		<h1 rel="localize[delete.title]"></h1>
+	</div>
+	<div data-role="content" >
+	<p rel="localize[delete.msg]"></p>
+	<div class="ui-grid-b">
+		<a href="#" id="cmd_deldel"	data-role="button" data-theme="c" rel="localize[delete]"></a>
+		<a href="#" id="cmd_delhide" data-role="button" data-theme="c" rel="localize[hide]"></a>
+		<a href="#" data-role="button"  data-rel="back" data-theme="c" rel="localize[cancel]"></a>
+	</div><!-- /grid-b -->
+	
+	</div>
+</div>
+<div data-role="dialog" id="edit">
+	<div data-role="header" >		
+		<!--<a href="#" id="editback" data-icon="delete"  data-rel="back" data-iconpos="notext" data-iconpos="bottom" rel="lxocalize[nav.back]"></a>-->
+		<h1 rel="localize[edit.title]"></h1>
+	</div>
+	<div data-role="content" >
+		<form>
+			<label for="edittitle" rel="localize[title]"></label>
+			<input type="text" name="edittitle" id="edittitle" value="" />
+			
+			<label for="editamount"  rel="localize[amount]"></label>
+			<input type="number" name="editamount" id="editamount" value="" min="0" step="0.1">
+			
+			<fieldset data-role="controlgroup" >
+			   <div role="heading" class="ui-controlgroup-label" rel="localize[flags]"></div>
+			   <input type="checkbox" name="editfav" id="editfav" />
+			   <label for="editfav" rel="localize[favorite]"></label>
+			   <input type="checkbox" name="edithide" id="edithide" />
+			   <label for="edithide" rel="localize[hide]"></label>
+			</fieldset>
+
+		</form>
+
+	<fieldset class="ui-grid-a">
+		<div class="ui-block-a"><a href="#" data-role="button" id="editback" data-icon="delete" data-rel="back"  rel="localize[cancel]"></a></div>
+		<div class="ui-block-b"><a href="#" id="cmd_save" data-role="button" data-theme="b" rel="localize[save]"></a></div>	   
+	</fieldset>	
+	</div>
 </div>
 
 <div data-role="page" id="generate">
 	<div data-role="header" >		
-		<h1 rel="localize[generate.title]"></h1>
+		<h1 rel="localize[generate]"></h1>
 	</div>
 	<div data-role="content" >
 		<form>
-			<label for="gentitle" rel="localize[gen.title]"></label>
+			<label for="gentitle" rel="localize[title]"></label>
 			<input type="text" name="gentitle" id="gentitle" value="" />
 			
-			<label for="genamount"  rel="localize[gen.amount]"></label>
+			<label for="genamount"  rel="localize[amount]"></label>
 			<input type="number" name="genamount" id="genamount" value="" min="0" step="0.1">
 			
 			<fieldset data-role="controlgroup" >
-			   <div role="heading" class="ui-controlgroup-label" rel="localize[gen.flags]"></div>
+			   <div role="heading" class="ui-controlgroup-label" rel="localize[flags]"></div>
 			   <input type="checkbox" name="genfav" id="genfav" />
-			   <label for="genfav" rel="localize[gen.favorite]"></label>
+			   <label for="genfav" rel="localize[favorite]"></label>
 			</fieldset>
 
 		</form>
-		<a id="cmd_generate" data-role="button" data-theme="b" rel="localize[gen.generate]"></a>
+		<a id="cmd_generate" data-role="button" data-theme="b" rel="localize[generate]"></a>
 	</div>
 </div>
 
