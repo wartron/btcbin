@@ -110,15 +110,20 @@ preformance: qr codes? html*, canvas
 </pre>
 
 	<fieldset class="ui-grid-a">
-		<div class="ui-block-a"><a href="#" id="import" data-role="button" data-theme="c" rel="localize[settings.import]"></a></div>
-		<div class="ui-block-b"><a href="#" id="export" data-role="button" data-theme="c" rel="localize[settings.export]"></a></div>	   
+		<div class="ui-block-a"><a href="#" id="import" data-role="button" data-theme="c" rel="localize[import]"></a></div>
+		<div class="ui-block-b"><a href="#" id="export" data-role="button" data-theme="c" rel="localize[export]"></a></div>	   
 	</fieldset>	
-
-
-<a href="#" id="droptables" data-role="button" data-theme="c" rel="localize[settings.droptable]"></a>
+	<a href="#dev" data-role="button" data-theme="c" rel="localize[devstuff]"></a>
 	</div>
 </div>
-
+<div data-role="page" id="dev">
+	<div data-role="header" >		
+		<h1 rel="localize[devstuff]"></h1>
+	</div>
+	<div data-role="content" >
+		<a href="#" id="droptables" data-role="button" data-theme="c" rel="localize[settings.droptable]"></a>
+	</div>
+</div>
 <div data-role="page" id="list">
 	<div data-role="header" >
 		<a href="#" data-icon="delete"  data-rel="back" data-iconpos="notext" data-iconpos="bottom" rel="lxocalize[nav.back]"></a>
@@ -250,7 +255,7 @@ preformance: qr codes? html*, canvas
 
 <div data-role="page" id="export">
 	<div data-role="header" >		
-		<h1 rel="localize[export.title]"></h1>
+		<h1 rel="localize[export]"></h1>
 	</div>
 	<a id="cmd_exportemail" data-role="button" data-theme="b" rel="localize[email]"></a>
 	<div data-role="content" >

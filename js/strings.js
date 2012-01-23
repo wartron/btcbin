@@ -38,6 +38,13 @@ var strings = {
 		'generate':'Generate',
 		'addr':'Public Address',
 		'key':'Private Key',
+		
+		'export':'Export',
+		'import':'Import',
+		
+		'email':'Email',
+		
+		
 				
 
 		
