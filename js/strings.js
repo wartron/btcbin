@@ -160,28 +160,28 @@ var strings = {
 		
 	},
 	'pt-br':{
-        'nav.accept':'Aceitar',
-        'nav.cancel':'Cancelar',
-        'nav.back':'Retornar',
-        'nav.next':'Próximo',
+		'nav.accept':'Aceitar',
+		'nav.cancel':'Cancelar',
+		'nav.back':'Retornar',
+		'nav.next':'Próximo',
 
-        'tos.title':'Termos do Serviço',
-        
-
-        'home.title':'Carteira Offline BTCBIN',         
-        'about.link':'Sobre',
-        'settings':'Configurações',
-        'generate':'Gerar',
-        'list':'Todas as Carteiras',
-        'home.favorites':'Carteiras Favoritas',
+		'tos.title':'Termos do Serviço',
 
 
-        'title':'Nome:',
-        'amount':'Quantidade:',
-        'flags':'Flags:',
-        'favorite':'Favorita',
+		'home.title':'Carteira Offline BTCBIN',         
+		'about.link':'Sobre',
+		'settings':'Configurações',
+		'generate':'Gerar',
+		'list':'Todas as Carteiras',
+		'home.favorites':'Carteiras Favoritas',
 
-        'about.title':'Sobre o BTCBIN',
+
+		'title':'Nome:',
+		'amount':'Quantidade:',
+		'flags':'Flags:',
+		'favorite':'Favorita',
+
+		'about.title':'Sobre o BTCBIN',
 
 	},
 	'it':{
