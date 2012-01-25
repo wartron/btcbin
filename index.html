@@ -19,6 +19,7 @@
 #walletlist,#deadlist{margin:-16px -16px -11px -16px !important;}
 .sml{font-size:0.8em}
 .viewfav{margin:-15px 0;float:right;}
+#changes{display:none}
 </style>
 </head>
 <body> 
@@ -94,29 +95,66 @@
 <div data-role="page" id="settings">
 	<div data-role="header" >
 		<a href="#" data-icon="delete"  data-rel="back" data-iconpos="notext" data-iconpos="bottom" rel="lxocalize[nav.back]"></a>
-		<h1 rel="localize[settings.title]"></h1>
+		<h1 rel="localize[settings]"></h1>
+		
 	</div>
-	<div data-role="content" >
-<pre>
-display: show 0 btc balances.
+	
+	<div class="ui-bar ui-bar-e" id="changes">
+		<h3 style="float:left; margin-top:8px;">Changes have been made!</h3>			
+		<p style="clear:both; font-size:85%; margin-bottom:8px;">
+			Would you like to save them?
+		</p>		
+		
+		<a href="#" id="cmd_settingssave" data-role="button" data-theme="b" style="float:right;max-width:100%" rel="localize[save]"></a>
+	</div>
 
+	<div data-role="content" >
+	
+		<form>
+			<label for="setdisplayZero" rel="localize[displayZero]"></label>
+			<select name="setdisplayZero" id="setdisplayZero" data-role="slider">
+				<option value="off">Off</option>
+				<option value="on">On</option>
+			</select> 
+			
+			<label for="setskiplang" rel="localize[skiplang]"></label>
+			<select name="setskiplang" id="setskiplang" data-role="slider">
+				<option value="off">Off</option>
+				<option value="on">On</option>
+			</select> 
+			
+			
+			<label for="setskiptos" rel="localize[skiptos]"></label>
+			<select name="setskiptos" id="setskiptos" data-role="slider">
+				<option value="off">Off</option>
+				<option value="on">On</option>
+			</select> 
+			
+			
+			<label for="setcrypted" rel="localize[crypted]"></label>
+			<select name="setcrypted" id="setcrypted" data-role="slider">
+				<option value="off">Off</option>
+				<option value="on">On</option>
+			</select>
+		</form>
+
+<pre>
 default lang
 
-skip lang selector
-
-skip tos
-
-	
 Deleting: hide*, fully remove
 	
 preformance: qr codes? html*, canvas
 </pre>
 
-	<fieldset class="ui-grid-a">
-		<div class="ui-block-a"><a href="#" id="import" data-role="button" data-theme="c" rel="localize[import]"></a></div>
-		<div class="ui-block-b"><a href="#" id="export" data-role="button" data-theme="c" rel="localize[export]"></a></div>	   
-	</fieldset>	
-	<a href="#dev" data-role="button" data-theme="c" rel="localize[devstuff]"></a>
+
+
+
+
+		<fieldset class="ui-grid-a">
+			<div class="ui-block-a"><a href="#" id="import" data-role="button" data-theme="c" rel="localize[import]"></a></div>
+			<div class="ui-block-b"><a href="#" id="export" data-role="button" data-theme="c" rel="localize[export]"></a></div>	   
+		</fieldset>	
+		<a href="#dev" data-role="button" data-theme="c" rel="localize[devstuff]"></a>
 	</div>
 </div>
 <div data-role="page" id="dev">

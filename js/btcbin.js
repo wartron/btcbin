@@ -2,7 +2,26 @@ var lastView= false;
 var btcbin = {
 	lang: "en",
 	viewing: null,
+	changes:false,
 	init: function(){	
+		$("#settings").find("select").each(function(num){
+			
+		
+		});
+	
+		$("select").live('change',function(e){
+			name = $(this).attr('id');
+			val = $(this).val();
+			if(!btcbin.changes){
+				$("#changes").slideDown();
+			}
+			
+			
+			btcbin.changes = true;
+			
+		});		
+		
+	
 		//lang selector at start
 		$(".langselector a").live('click',function(e){
 			nlang = $(this).attr("lang");
@@ -184,6 +203,29 @@ var btcbin = {
 			}
 		});
 		
+		$("#cmd_settingssave").click(function (){
+			var $content = $("#settings"),
+				$changes = $content.find( "#changes" ),
+				$displayZero = $content.find("#setdisplayZero"),
+				$skiplang = $content.find("#setskiplang"),
+				$skiptos = $content.find("#setskiptos"),
+				$crypted = $content.find("#setcrypted");
+				
+				btcbin.settings.o.displayZero = ($displayZero.val()=="on")
+				btcbin.settings.o.skipLang = ($skiplang.val()=="on")
+				btcbin.settings.o.skipTos = ($skiptos.val()=="on")
+				btcbin.settings.o.crypted = ($crypted.val()=="on")
+				
+				btcbin.settings.save();
+				
+				btcbin.changes = false;
+				$changes.slideUp();
+		
+		
+		});
+		
+		
+		
 		
 		btcbin.settings.init();
 		btcbin.localize();
@@ -225,6 +267,9 @@ var btcbin = {
 			btcbin.settings.load();
 		},
 		load:function(){
+		
+		},
+		save:function(){
 		
 		}
 	},
@@ -453,6 +498,8 @@ var btcbin = {
 			
 			btcbin.router.wallet(url);
 			
+			btcbin.router.settings(url);
+			
 			//btcbin.router.walletedit(url);
 		},
 		home:function(url){
@@ -470,6 +517,14 @@ var btcbin = {
 
 				btcbin.views.list(true);//need to do a refersh
 			}		
+		},
+		settings:function(url){
+				var u = $.mobile.path.parseUrl( url ),
+					re = /^#settings/;
+				if ( u.hash.search(re) !== -1 ) {
+					$.mobile.showPageLoadingMsg();  
+					btcbin.views.settings( );
+				}
 		},
 
 		wallet: function(url){
@@ -614,6 +669,29 @@ var btcbin = {
 
 			
 		},
+		settings: function(){
+			btcbin.changes = false;
+			
+			var $page = $( "#settings" ),
+				$header = $page.children( ":jqmData(role=header)" ),
+				$changes = $page.find( "#changes" ),
+				$content = $page.children( ":jqmData(role=content)" ),
+				$displayZero = $content.find("#setdisplayZero"),
+				$skiplang = $content.find("#setskiplang"),
+				$skiptos = $content.find("#setskiptos"),
+				$crypted = $content.find("#setcrypted");
+				
+				$changes.hide();
+				
+				$displayZero.val( btcbin.settings.o.displayZero? "on":"off").slider('refresh');
+				$skiplang.val( btcbin.settings.o.skipLang? "on":"off").slider('refresh');
+				$skiptos.val( btcbin.settings.o.skipTos? "on":"off").slider('refresh');
+				$crypted.val( btcbin.settings.o.crypted? "on":"off").slider('refresh');
+				
+				$.mobile.hidePageLoadingMsg();
+			
+				
+		},
 		walletedit: function(){
 					
 			var fid = btcbin.viewing;
@@ -644,7 +722,7 @@ var btcbin = {
 					}else{
 						//console.log("zerorows");
 					}
-					$.mobile.hidePageLoadingMsg();
+					
 					
 				});
 			}		
