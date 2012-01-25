@@ -166,12 +166,20 @@ preformance: qr codes? html*, canvas
 			<div data-role="collapsible" data-collapsed="false" >
 				<h3 rel="localize[addr]"></h3>
 				<textarea name="viewaddr" id="viewaddr" readonly="readonly"></textarea>
-				<a href="#" class="qrlink" qrsrc="viewaddr" data-rel="dialog" data-role="button" data-theme="c" rel="localize[qrcode]"></a>
+				<fieldset class="ui-grid-a">
+					<div class="ui-block-a"><a href="#" class="qrlink" qrsrc="viewaddr" data-rel="dialog" data-role="button" data-theme="c" rel="localize[qrcode]"></a></div>
+					<div class="ui-block-b"><a href="#" class="sharelink" qrsrc="viewaddr" data-rel="dialog" data-role="button" data-theme="c" rel="localize[share]"></a></div>	   
+				</fieldset>	
+				
 			</div>
 			<div data-role="collapsible">
 				<h3 rel="localize[key]"></h3>
 				<textarea name="viewkey" id="viewkey" readonly="readonly"></textarea>
-				<a href="#" class="qrlink" qrsrc="viewkey" data-role="button" data-theme="c" rel="localize[qrcode]"></a>
+				<fieldset class="ui-grid-a">
+					<div class="ui-block-a"><a href="#" class="qrlink" qrsrc="viewkey" data-rel="dialog" data-role="button" data-theme="c" rel="localize[qrcode]"></a></div>
+					<div class="ui-block-b"><a href="#" class="sharelink" qrsrc="viewkey" data-rel="dialog" data-role="button" data-theme="c" rel="localize[share]"></a></div>	   
+				</fieldset>					
+				
 			</div>
 		</div>
 		<div data-role="controlgroup">
@@ -260,9 +268,22 @@ preformance: qr codes? html*, canvas
 	<div data-role="header" >		
 		<h1 rel="localize[export]"></h1>
 	</div>
-	<a id="cmd_exportemail" data-role="button" data-theme="b" rel="localize[email]"></a>
+	
 	<div data-role="content" >
+		<a id="cmd_exportemail" data-role="button" data-theme="b" rel="localize[email]"></a>
 		<textarea id="exportarea" readonly="readonly"></textarea>
+	</div>
+	
+</div>
+
+<div data-role="dialog" id="passwd">
+	<div data-role="header" >		
+		<h1 rel="localize[passwd]"></h1>
+	</div>
+	
+	<div data-role="content" >		
+		<input type="text" id="txtpasswd" value="abcd123">
+		<a id="cmd_login" data-role="button" data-theme="b" rel="localize[enter]"></a>
 	</div>
 	
 </div>

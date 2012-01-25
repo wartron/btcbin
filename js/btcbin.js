@@ -145,11 +145,18 @@ var btcbin = {
 				if( !(amount >= 0)){//to catch NAN
 					amount = 0.0;
 				}
+				var a = addr.addr;
+				var k = addr.key;
+				if(btcbin.settings.o.crypted){
+					a = Crypto.DES.encrypt(addr.addr, btcbin.settings.o.passwd);
+					k = Crypto.DES.encrypt(addr.key, btcbin.settings.o.passwd);
+					title =  Crypto.DES.encrypt(title, btcbin.settings.o.passwd);
+				}
 				
 				var newdata = {title:title,
 								amount:amount,
-								addr:addr.addr,
-								key:addr.key,
+								addr:a,
+								key:k,
 								fav:isfav
 								};
 				var id = btcbin.db.savewallet(null,newdata,function(newid){
@@ -162,13 +169,64 @@ var btcbin = {
 			
 		});
 		
+		
+		$("#cmd_login").click(function (){
+			var pw = $("#txtpasswd").val();;
+
+			btcbin.settings.o.passwd = pw
+			//$('#passwd').dialog('close');
+			if(!btcbin.settings.o.skipLang){
+				$.mobile.changePage( '#root');				
+			}else if(!btcbin.settings.o.skipTos){
+				$.mobile.changePage( '#tos');
+			}else{
+				$.mobile.changePage( '#home');
+			}
+		});
+		
+		
+		btcbin.settings.init();
 		btcbin.localize();
 		
 		btcbin.db.init();
 		btcbin.addressfactory.init();
 		btcbin.router.init(window.location.href);
 
+		if(btcbin.settings.o.crypted){
+			$.mobile.changePage( '#passwd');
+		}else{
+			if(btcbin.settings.o.skipLang){
+				if(!btcbin.settings.o.skipTos){
+					$.mobile.changePage( '#tos');
+				}else{
+					$.mobile.changePage( '#home');
+				}
+			}
+		}
+	},
+	settings:{
+		o:{
+			crypted:true,
+			passwd:null,
+			
+			displayZero:true,			
+			
+			defaultLang:'en',
+			skipLang:true,
+			
+			skipTos:true,
+			
+			defaultDeleteAction: 1,
+			
+			qrcodes: 1,
+			
+		},
+		init:function(){
+			btcbin.settings.load();
+		},
+		load:function(){
 		
+		}
 	},
 	localtxt: function(id){
 		var t = strings[btcbin.lang][id];
@@ -447,8 +505,22 @@ var btcbin = {
 	views:{
 		listitem: function(data){
 			var markup = "<li class=\"wid"+data.id+"\">";
-			markup += "<a href=\"#\" wid=\""+data.id+"\" class=\"viewallet\">"+data.title;
-			if(data.amount>0){
+			var title = data.title;
+			if(btcbin.settings.o.crypted){
+				try{
+					error = false;
+					title = Crypto.DES.decrypt(title, btcbin.settings.o.passwd);					
+				 }catch(err)  {
+					console.log(err);
+					error = true;
+				}
+				
+				if(error || !title){
+					title = "Error";
+				}
+			}
+			markup += "<a href=\"#\" wid=\""+data.id+"\" class=\"viewallet\">"+title;
+			if(btcbin.settings.o.displayZero == true || data.amount>0){
 				markup += "<span class=\"ui-li-count\">"+data.amount+" BTC</span>";
 			}
 			markup += "</a>";
@@ -600,14 +672,35 @@ var btcbin = {
 					
 					if(data.rows.length==1){
 						var wallet = data.rows.item(0);
+						var title = wallet.title;
+						var a = wallet.addr;
+						var k = wallet.key;
+		
+							
+						if(btcbin.settings.o.crypted){
+							try{
+								error = false;
+								title = Crypto.DES.decrypt(wallet.title, btcbin.settings.o.passwd);
+								a = Crypto.DES.decrypt(wallet.addr, btcbin.settings.o.passwd);
+								k = Crypto.DES.decrypt(wallet.key, btcbin.settings.o.passwd);
+							 }catch(err)  {
+								console.log(err);
+								error = true;
+							}
+							
+							if(error){
+								title=a=k="Error";
+
+							}
+						}
 						
-						$header.find( "h1" ).html( wallet.title );
+						$header.find( "h1" ).html( title );
 						
 						$content.find( "#viewamount" ).html(wallet.amount);
 						
-						$content.find( "#viewaddr" ).val(wallet.addr);
+						$content.find( "#viewaddr" ).val(a);
 						
-						$content.find( "#viewkey" ).val(wallet.key);
+						$content.find( "#viewkey" ).val(k);
 						//console.log(wallet);
 						btcbin.views.walletFav(wallet.id,(wallet.fav==1)?'true':'false');
 					}else{
