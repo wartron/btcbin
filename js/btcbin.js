@@ -168,9 +168,9 @@ var btcbin = {
 				var a = addr.addr;
 				var k = addr.key;
 				if(btcbin.settings.o.crypted==1){
-					a = Crypto.DES.encrypt(addr.addr, btcbin.settings.o.passwd);
-					k = Crypto.DES.encrypt(addr.key, btcbin.settings.o.passwd);
-					title =  Crypto.DES.encrypt(title, btcbin.settings.o.passwd);
+					a = Crypto.AES.encrypt(addr.addr, btcbin.settings.o.passwd);
+					k = Crypto.AES.encrypt(addr.key, btcbin.settings.o.passwd);
+					title =  Crypto.AES.encrypt(title, btcbin.settings.o.passwd);
 				}
 				
 				var newdata = {title:title,
@@ -266,7 +266,7 @@ var btcbin = {
 			
 			defaultDeleteAction: 1,
 			
-			qrcodes: 1,
+			qrcoAES: 1,
 			
 		},
 		init:function(){
@@ -593,7 +593,7 @@ var btcbin = {
 			if(btcbin.settings.o.crypted==1){
 				try{
 					error = false;
-					title = Crypto.DES.decrypt(title, btcbin.settings.o.passwd);					
+					title = Crypto.AES.decrypt(title, btcbin.settings.o.passwd);					
 				 }catch(err)  {
 					console.log(err);
 					error = true;
@@ -789,9 +789,9 @@ var btcbin = {
 						if(btcbin.settings.o.crypted==1){
 							try{
 								error = false;
-								title = Crypto.DES.decrypt(wallet.title, btcbin.settings.o.passwd);
-								a = Crypto.DES.decrypt(wallet.addr, btcbin.settings.o.passwd);
-								k = Crypto.DES.decrypt(wallet.key, btcbin.settings.o.passwd);
+								title = Crypto.AES.decrypt(wallet.title, btcbin.settings.o.passwd);
+								a = Crypto.AES.decrypt(wallet.addr, btcbin.settings.o.passwd);
+								k = Crypto.AES.decrypt(wallet.key, btcbin.settings.o.passwd);
 							 }catch(err)  {
 								console.log(err);
 								error = true;
