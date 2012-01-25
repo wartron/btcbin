@@ -166,7 +166,7 @@ var btcbin = {
 				}
 				var a = addr.addr;
 				var k = addr.key;
-				if(btcbin.settings.o.crypted){
+				if(btcbin.settings.o.crypted==1){
 					a = Crypto.DES.encrypt(addr.addr, btcbin.settings.o.passwd);
 					k = Crypto.DES.encrypt(addr.key, btcbin.settings.o.passwd);
 					title =  Crypto.DES.encrypt(title, btcbin.settings.o.passwd);
@@ -194,9 +194,9 @@ var btcbin = {
 
 			btcbin.settings.o.passwd = pw
 			//$('#passwd').dialog('close');
-			if(!btcbin.settings.o.skipLang){
+			if(!(btcbin.settings.o.skipLang==1)){
 				$.mobile.changePage( '#root');				
-			}else if(!btcbin.settings.o.skipTos){
+			}else if(!(btcbin.settings.o.skipTos==1)){
 				$.mobile.changePage( '#tos');
 			}else{
 				$.mobile.changePage( '#home');
@@ -211,10 +211,15 @@ var btcbin = {
 				$skiptos = $content.find("#setskiptos"),
 				$crypted = $content.find("#setcrypted");
 				
-				btcbin.settings.o.displayZero = ($displayZero.val()=="on")
-				btcbin.settings.o.skipLang = ($skiplang.val()=="on")
-				btcbin.settings.o.skipTos = ($skiptos.val()=="on")
-				btcbin.settings.o.crypted = ($crypted.val()=="on")
+
+				
+				btcbin.settings.o.displayZero = ($displayZero.val()=="on")?1:0
+				btcbin.settings.o.skipLang = ($skiplang.val()=="on")?1:0
+				btcbin.settings.o.skipTos = ($skiptos.val()=="on")?1:0
+				btcbin.settings.o.crypted = ($crypted.val()=="on")?1:0
+				
+
+				
 				
 				btcbin.settings.save();
 				
@@ -234,11 +239,11 @@ var btcbin = {
 		btcbin.addressfactory.init();
 		btcbin.router.init(window.location.href);
 
-		if(btcbin.settings.o.crypted){
+		if(btcbin.settings.o.crypted==1){
 			$.mobile.changePage( '#passwd');
 		}else{
-			if(btcbin.settings.o.skipLang){
-				if(!btcbin.settings.o.skipTos){
+			if(btcbin.settings.o.skipLang==1){
+				if(!(btcbin.settings.o.skipTos==1)){
 					$.mobile.changePage( '#tos');
 				}else{
 					$.mobile.changePage( '#home');
@@ -248,15 +253,15 @@ var btcbin = {
 	},
 	settings:{
 		o:{
-			crypted:true,
+			crypted:0,
 			passwd:null,
 			
-			displayZero:true,			
+			displayZero:1,			
 			
 			defaultLang:'en',
-			skipLang:true,
+			skipLang:0,
 			
-			skipTos:true,
+			skipTos:0,
 			
 			defaultDeleteAction: 1,
 			
@@ -267,10 +272,26 @@ var btcbin = {
 			btcbin.settings.load();
 		},
 		load:function(){
-		
+			console.log("load");
+
+			btcbin.settings.o.crypted = btcbin.ls.get('crypted',btcbin.settings.o.crypted);
+			btcbin.settings.o.displayZero = btcbin.ls.get('displayZero',btcbin.settings.o.crypted);			
+			btcbin.settings.o.skipLang = btcbin.ls.get('skipLang',btcbin.settings.o.skipLang);
+			btcbin.settings.o.skipTos = btcbin.ls.get('skipTos',btcbin.settings.o.skipTos);
+			
+			
+			console.log(btcbin.settings.o.displayZero);
+			console.log(btcbin.settings.o.skipLang);
+			console.log(btcbin.settings.o.skipTos);
+			console.log(btcbin.settings.o.crypted);
+			
 		},
 		save:function(){
-		
+			console.log("save");
+			btcbin.ls.set('crypted',btcbin.settings.o.crypted);
+			btcbin.ls.set('displayZero',btcbin.settings.o.crypted);			
+			btcbin.ls.set('skipLang',btcbin.settings.o.skipLang);
+			btcbin.ls.set('skipTos',btcbin.settings.o.skipTos);
 		}
 	},
 	localtxt: function(id){
@@ -298,6 +319,19 @@ var btcbin = {
 	},
 	log: function(o){
 		//console.log(o);		
+	},
+	ls:{
+		get:function(key,def){
+			var val = localStorage.getItem(key);			
+			
+			if(val != null)
+				return val
+			return def
+		
+		},
+		set:function(key,val){
+			localStorage.setItem(key,val);
+		}
 	},
 	db:{
 		options:{
@@ -561,7 +595,7 @@ var btcbin = {
 		listitem: function(data){
 			var markup = "<li class=\"wid"+data.id+"\">";
 			var title = data.title;
-			if(btcbin.settings.o.crypted){
+			if(btcbin.settings.o.crypted==1){
 				try{
 					error = false;
 					title = Crypto.DES.decrypt(title, btcbin.settings.o.passwd);					
@@ -683,10 +717,17 @@ var btcbin = {
 				
 				$changes.hide();
 				
-				$displayZero.val( btcbin.settings.o.displayZero? "on":"off").slider('refresh');
-				$skiplang.val( btcbin.settings.o.skipLang? "on":"off").slider('refresh');
-				$skiptos.val( btcbin.settings.o.skipTos? "on":"off").slider('refresh');
-				$crypted.val( btcbin.settings.o.crypted? "on":"off").slider('refresh');
+				$displayZero.val( (btcbin.settings.o.displayZero==1)? "on":"off").slider('refresh');
+				$skiplang.val( (btcbin.settings.o.skipLang==1)? "on":"off").slider('refresh');
+				$skiptos.val( (btcbin.settings.o.skipTos==1)? "on":"off").slider('refresh');
+				$crypted.val( (btcbin.settings.o.crypted==1)? "on":"off").slider('refresh');
+				
+
+			console.log(btcbin.settings.o.displayZero);
+			console.log(btcbin.settings.o.skipLang);
+			console.log(btcbin.settings.o.skipTos);
+			console.log(btcbin.settings.o.crypted);
+				
 				
 				$.mobile.hidePageLoadingMsg();
 			
@@ -755,7 +796,7 @@ var btcbin = {
 						var k = wallet.key;
 		
 							
-						if(btcbin.settings.o.crypted){
+						if(btcbin.settings.o.crypted==1){
 							try{
 								error = false;
 								title = Crypto.DES.decrypt(wallet.title, btcbin.settings.o.passwd);
