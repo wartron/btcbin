@@ -205,8 +205,8 @@ preformance: qr codes? html*, canvas
 				<h3 rel="localize[addr]"></h3>
 				<textarea name="viewaddr" id="viewaddr" readonly="readonly"></textarea>
 				<fieldset class="ui-grid-a">
-					<div class="ui-block-a"><a href="#" class="qrlink" qrsrc="viewaddr" data-rel="dialog" data-role="button" data-theme="c" rel="localize[qrcode]"></a></div>
-					<div class="ui-block-b"><a href="#" class="sharelink" qrsrc="viewaddr" data-rel="dialog" data-role="button" data-theme="c" rel="localize[share]"></a></div>	   
+					<div class="ui-block-a"><a href="#" class="qrlink" dsrc="viewaddr" data-rel="dialog" data-role="button" data-theme="c" rel="localize[qrcode]"></a></div>
+					<div class="ui-block-b"><a href="#" class="sharelink" dsrc="viewaddr" data-rel="dialog" data-role="button" data-theme="c" rel="localize[share]"></a></div>	   
 				</fieldset>	
 				
 			</div>
@@ -214,8 +214,8 @@ preformance: qr codes? html*, canvas
 				<h3 rel="localize[key]"></h3>
 				<textarea name="viewkey" id="viewkey" readonly="readonly"></textarea>
 				<fieldset class="ui-grid-a">
-					<div class="ui-block-a"><a href="#" class="qrlink" qrsrc="viewkey" data-rel="dialog" data-role="button" data-theme="c" rel="localize[qrcode]"></a></div>
-					<div class="ui-block-b"><a href="#" class="sharelink" qrsrc="viewkey" data-rel="dialog" data-role="button" data-theme="c" rel="localize[share]"></a></div>	   
+					<div class="ui-block-a"><a href="#" class="qrlink" dsrc="viewkey" data-rel="dialog" data-role="button" data-theme="c" rel="localize[qrcode]"></a></div>
+					<div class="ui-block-b"><a href="#" class="sharelink" dsrc="viewkey" data-rel="dialog" data-role="button" data-theme="c" rel="localize[share]"></a></div>	   
 				</fieldset>					
 				
 			</div>
@@ -308,7 +308,7 @@ preformance: qr codes? html*, canvas
 	</div>
 	
 	<div data-role="content" >
-		<a id="cmd_exportemail" data-role="button" data-theme="b" rel="localize[email]"></a>
+		<a id="#" class="sharelink" dsrc="exportarea" data-role="button" data-theme="b" rel="localize[email]"></a>
 		<textarea id="exportarea" readonly="readonly"></textarea>
 	</div>
 	

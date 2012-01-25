@@ -44,8 +44,13 @@ var strings = {
 		
 		'email':'Email',
 		
-		
-		
+		'passwd':'Password',
+		'enter':'Enter',
+		'share':'Share',
+		'displayZero':'Display Zero BTC Balances',
+		'skiplang':'Skip Language Selector',
+		'skiptos':'Skip TOS',
+		'crypted':'Use DES Encryption (Requires Refresh)',
 
 		
 	},

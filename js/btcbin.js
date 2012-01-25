@@ -25,8 +25,8 @@ var btcbin = {
 		//lang selector at start
 		$(".langselector a").live('click',function(e){
 			nlang = $(this).attr("lang");
-			if(btcbin.lang != nlang){
-				btcbin.lang = nlang;
+			if(btcbin.settings.o.defaultLang != nlang){
+				btcbin.settings.o.defaultLang = nlang;
 				btcbin.localize();
 			}
 			$.mobile.changePage( "#tos",{changeHash: false});		
@@ -55,16 +55,17 @@ var btcbin = {
 				
 			});
 		});
-		$("#cmd_exportemail").click(function (){
-			var json=$("#exportarea").val();
-			window.location.href = "mailto:?subject=BTCBIN.bk&body="+json;
-		});
-		
+	
 		
 		//qrlinks
 		$(".qrlink").click(function (){
-			var qrsrc = $(this).attr('qrsrc');
+			var qrsrc = $(this).attr('dsrc');
 			btcbin.views.qr($("#"+qrsrc).val())
+		});
+		$(".sharelink").click(function (){
+			var src = $(this).attr('dsrc');
+			var val = $("#"+src).val();
+			window.location.href = "mailto:?body="+val;
 		});
 		
 		//the fav button in the top right when viewing a addrss
@@ -233,8 +234,8 @@ var btcbin = {
 		
 		
 		btcbin.settings.init();
-		btcbin.localize();
 		
+		btcbin.localize();		
 		btcbin.db.init();
 		btcbin.addressfactory.init();
 		btcbin.router.init(window.location.href);
@@ -278,30 +279,24 @@ var btcbin = {
 			btcbin.settings.o.displayZero = btcbin.ls.get('displayZero',btcbin.settings.o.crypted);			
 			btcbin.settings.o.skipLang = btcbin.ls.get('skipLang',btcbin.settings.o.skipLang);
 			btcbin.settings.o.skipTos = btcbin.ls.get('skipTos',btcbin.settings.o.skipTos);
-			
-			
-			console.log(btcbin.settings.o.displayZero);
-			console.log(btcbin.settings.o.skipLang);
-			console.log(btcbin.settings.o.skipTos);
-			console.log(btcbin.settings.o.crypted);
-			
+
 		},
 		save:function(){
 			console.log("save");
 			btcbin.ls.set('crypted',btcbin.settings.o.crypted);
-			btcbin.ls.set('displayZero',btcbin.settings.o.crypted);			
+			btcbin.ls.set('displayZero',btcbin.settings.o.displayZero);			
 			btcbin.ls.set('skipLang',btcbin.settings.o.skipLang);
 			btcbin.ls.set('skipTos',btcbin.settings.o.skipTos);
 		}
 	},
 	localtxt: function(id){
-		var t = strings[btcbin.lang][id];
+		var t = strings[btcbin.settings.o.defaultLang][id];
 		if(t)
 			return t;
 		t = strings["en"][id];
 		if(t)
 			return t;
-		return btcbin.lang+'.'+id;
+		return btcbin.settings.o.defaultLang+'.'+id;
 	},
 	localize: function(){	
 		$("[rel*=localize]").each(function (){
@@ -723,12 +718,7 @@ var btcbin = {
 				$crypted.val( (btcbin.settings.o.crypted==1)? "on":"off").slider('refresh');
 				
 
-			console.log(btcbin.settings.o.displayZero);
-			console.log(btcbin.settings.o.skipLang);
-			console.log(btcbin.settings.o.skipTos);
-			console.log(btcbin.settings.o.crypted);
-				
-				
+
 				$.mobile.hidePageLoadingMsg();
 			
 				
