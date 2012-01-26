@@ -12,8 +12,7 @@ var strings = {
 		'delete':'Delete',
 		'hide':'Hide',
 		'cancel':'Cancel',
-		
-		
+				
 		'tos.title':'Terms of Service',
 		'tos':'<p>Lorem ipsum dolor sit amet, BTCBIN is currently in development, and comes as is with no guarantee that it will work.</p><p>By accepting these terms; you agree that the authors can\'t be held responsible for any damanges or losses.</p>',
 		
@@ -50,7 +49,7 @@ var strings = {
 		'displayZero':'Display Zero BTC Balances',
 		'skiplang':'Skip Language Selector',
 		'skiptos':'Skip TOS',
-		'crypted':'Use DES Encryption (Requires Refresh)',
+		'crypted':'Use AES Encryption (Requires Refresh)',
 
 		
 	},
