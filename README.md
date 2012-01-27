@@ -1,6 +1,5 @@
 BTCBIN Offline Bitcoin Wallet
 =========================
-
 * * *
 
 Features:
