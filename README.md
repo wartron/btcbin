@@ -9,10 +9,12 @@ Features:
 
 	* Generate Bitcoin Addresses on the fly
 	* Can work offline via HTML5 appcaching
-	* AES Encryption of wallets stored on phone
+	* AES Encryption of wallets stored on device
 	* QR-Codes generated with Tables or Canvas
-	* Sharing via Email/Sms/etc...
+	* Sharing via QR/Email/Sms/etc...
+	* Import / Export 
 	* Internationalization support, including French, Spanish, German, and Esperanto.
+	
 	
 
 
