@@ -369,7 +369,7 @@ var btcbin = {
 			name:'btcbin',
 			version:'1.0',
 			display:'btcbin',
-			maxsize: 1024* 10
+			maxsize: 1024*10,
 		},
 		_db: null,
 		init: function(){
@@ -656,11 +656,13 @@ var btcbin = {
 			var wallets = btcbin.db.getfav(function (results){
 				var markup = "";
 
-				$.each(results.rows,function( rowIndex ){
-					var row = results.rows.item( rowIndex );
-					markup += btcbin.views.listitem(row);
-				});
-
+				if(results.rows){
+					$.each(results.rows,function(o, rowIndex ){
+						rowIndex = rowIndex - 1 //wtf
+						var row = results.rows.item( rowIndex );
+						markup += btcbin.views.listitem(row);
+					});
+				}
 
 
 				$list.html(markup);
