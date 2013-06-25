@@ -1,5 +1,6 @@
+window.strings = window.strings || {};
 
-	'fr':{
+window.strings['fr'] = {
 		'selectlang':'S&eacute;lectionnez la langue',
 		'nav.accept':'D\'accord',
 		'nav.cancel':'Annuler',

@@ -1,4 +1,6 @@
-	'pt-br':{
+window.strings = window.strings || {};
+
+window.strings['pt-br'] = {
 		'nav.accept':'Aceitar',
 		'nav.cancel':'Cancelar',
 		'nav.back':'Retornar',

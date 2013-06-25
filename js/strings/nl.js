@@ -1,6 +1,6 @@
+window.strings = window.strings || {};
 
-
-	'nl':{
+window.strings['nl'] = {
 		'nav.accept':'Accepteren',
 		'nav.cancel':'Annuleren',
 		'nav.back':'Terug',

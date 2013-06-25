@@ -1,4 +1,7 @@
-var strings_en = {
+/*window.strings ?= {}*/
+window.strings = window.strings || {};
+
+window.strings['en'] =  {
 	'selectlang':'Select a language',
 	'nav.accept':'Accept',
 	'nav.cancel':'Cancel',

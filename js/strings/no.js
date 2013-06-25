@@ -1,5 +1,6 @@
+window.strings = window.strings || {};
 
-	'no':{
+window.strings['no'] = {
 		'nav.accept':'Aksepter',
 		'nav.cancel':'Avbryt',
 		'nav.back':'Tilbake',

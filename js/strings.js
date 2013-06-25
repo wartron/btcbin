@@ -1,3 +1,7 @@
+/**
+* This is deprecated.
+* Use /js/strings for all localization
+*/
 var strings = {
 	'en':{
 		'selectlang':'Select a language',

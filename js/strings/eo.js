@@ -1,4 +1,6 @@
-var strings_eo ={
+window.strings = window.strings || {};
+
+window.strings['eo'] = {
 	'selectlang':'Elektu lingvon',
 	'nav.accept':'Akceptu',
 	'nav.cancel':'Nuligu',
