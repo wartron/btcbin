@@ -5,30 +5,30 @@ var strings = {
 		'nav.cancel':'Cancel',
 		'nav.back':'Back',
 		'nav.next':'Next',
-		
-		'qrcode':'QR Code',		
+
+		'qrcode':'QR Code',
 		'edit':'Edit',
 		'save':'Save',
 		'delete':'Delete',
 		'hide':'Hide',
 		'cancel':'Cancel',
-				
+
 		'tos.title':'Terms of Service',
 		'tos':'<p>Lorem ipsum dolor sit amet, BTCBIN is currently in development, and comes as is with no guarantee that it will work.</p><p>By accepting these terms; you agree that the authors can\'t be held responsible for any damanges or losses.</p>',
-		
-		'home.title':'BTCBIN Offline Wallet',			
-		
+
+		'home.title':'BTCBIN Offline Wallet',
+
 		'delete.title':'Confirm Delete?',
 		'delete.msg':'Are you sure you want to delete this wallet?',
 		'about.link':'About',
-		'about.title':'About BTCBIN',	
-		
+		'about.title':'About BTCBIN',
+
 		'home.favorites':'Favorite Wallets',
-		
+
 		'settings':'Settings',
 		'generate':'Generate',
 		'list':'All Wallets',
-				
+
 		//for wallet
 		'title':'Label:',
 		'amount':'Amount:',
@@ -37,12 +37,12 @@ var strings = {
 		'generate':'Generate',
 		'addr':'Public Address',
 		'key':'Private Key',
-		
+
 		'export':'Export',
 		'import':'Import',
-		
+
 		'email':'Email',
-		
+
 		'passwd':'Password',
 		'enter':'Enter',
 		'share':'Share',
@@ -51,7 +51,7 @@ var strings = {
 		'skiptos':'Skip TOS',
 		'crypted':'Use AES Encryption (Requires Refresh)',
 
-		
+
 	},
 	'eo':{
 		'selectlang':'Elektu lingvon',
@@ -59,31 +59,31 @@ var strings = {
 		'nav.cancel':'Nuligu',
 		'nav.back':'Antaŭa',
 		'nav.next':'Sekva',
-		
-		'qrcode':'QR-a kodo',		
+
+		'qrcode':'QR-a kodo',
 		'edit':'Redaktu',
 		'save':'Savu',
 		'delete':'Forigu',
 		'hide':'Kaŝu',
 		'cancel':'Nuligu',
-		
-		
+
+
 		'tos.title':'Uzokondiĉoj',
 		'tos':'<p>Esti determinita</p>',
-		
-		'home.title':'BTCBIN eksterreta monujo',			
-		
+
+		'home.title':'BTCBIN eksterreta monujo',
+
 		'delete.title':'Konfirmu forigon?',
 		'delete.msg':'Certe forigu ĉi tiun monujon?',
 		'about.link':'Pri',
-		'about.title':'Pri BTCBIN',	
-		
+		'about.title':'Pri BTCBIN',
+
 		'home.favorites':'Ŝatataj monujoj',
-		
+
 		'settings':'Agordoj',
 		'generate':'Generu',
 		'list':'Ĉiaj monujoj',
-				
+
 		//for wallet
 		'title':'Etikedo:',
 		'amount':'Sumo:',
@@ -92,21 +92,21 @@ var strings = {
 		'generate':'Generu',
 		'addr':'Publika adreso',
 		'key':'Privata ŝlosilo',
-		
+
 		'export':'Eksportu',
 		'import':'Importu',
-		
-		'email':'Retpoŝto',	
+
+		'email':'Retpoŝto',
 	},
-	'es':{			
+	'es':{
 		'selectlang':'Seleccionar el idioma',
 		'nav.accept':'Aceptar',
 		'nav.cancel':'Cancelar',
 		'nav.back':'Volver',
 		'nav.next':'Avanzar',
-		
+
 		'tos.title':'T&eacute;rminos del Servicio',
-	
+
 	},
 	'de':{
 		'selectlang':'W&auml;hlen Sie die Sprache',
@@ -114,9 +114,9 @@ var strings = {
 		'nav.cancel':'Stornieren',
 		'nav.back':'Zur&uuml;ck',
 		'nav.next':'N&auml;chste',
-		
+
 		'tos.title':'Nutzungsbedingungen',
-	
+
 	},
 	'fr':{
 		'selectlang':'S&eacute;lectionnez la langue',
@@ -124,10 +124,10 @@ var strings = {
 		'nav.cancel':'Annuler',
 		'nav.back':'Retour',
 		'nav.next':'Avant',
-		
+
 		'tos.title':'Conditions d\'utilisation du service',
 
-		'home.title':'BTCBIN portefeuille hors-ligne',			
+		'home.title':'BTCBIN portefeuille hors-ligne',
 		'about.link':'A propos',
 		'settings':'Param&egrave;tres',
 		'generate':'G&eacute;n&eacute;rer',
@@ -139,25 +139,25 @@ var strings = {
 		'amount':'Montant :',
 		'flags':'Etiquettes :',
 		'favorite':'Favoris',
-	
 
-		'view.title':'Chargement...',		
+
+		'view.title':'Chargement...',
 
 		'about.title':'A propos de BTCBIN',
 
 
-		
+
 	},
-	
-	'nl':{ 
-		'nav.accept':'Accepteren', 
+
+	'nl':{
+		'nav.accept':'Accepteren',
 		'nav.cancel':'Annuleren',
 		'nav.back':'Terug',
 		'nav.next':'Volgende',
 		'tos.title':'Algemene Voorwaarden',
-		
 
-		'home.title':'BTCBIN Offline Portemonee',           
+
+		'home.title':'BTCBIN Offline Portemonee',
 		'about.link':'Over',
 		'settings':'Instellingen',
 		'generate':'Genereer',
@@ -169,14 +169,14 @@ var strings = {
 		'amount':'Hoeveelheid:',
 		'flags':'Vlaggen:',
 		'favorite':'Favoriet',
-		
 
-		'view.title':'Laden...',    
- 
+
+		'view.title':'Laden...',
+
 
 		'about.title':'Over BTCBIN',
 
-	
+
 
 
 	},
@@ -185,10 +185,10 @@ var strings = {
 		'nav.cancel':'Avbryt',
 		'nav.back':'Tilbake',
 		'nav.next':'Neste',
-		
+
 		'tos.title':'Betingelser for tjeneste',
-				
-		'home.title':'BTCBIN Offline Wallet',			
+
+		'home.title':'BTCBIN Offline Wallet',
 		'about.link':'Om',
 		'settings':'Innstillinger',
 		'generate':'Generer',
@@ -201,12 +201,12 @@ var strings = {
 		'flags':'Flagg:',
 		'favorite':'Favoritt',
 
-		
-		'view.title':'Laster ...',	
-		
-		
+
+		'view.title':'Laster ...',
+
+
 		'about.title':'Om BTCBIN',
-		
+
 	},
 	'pt-br':{
 		'nav.accept':'Aceitar',
@@ -217,7 +217,7 @@ var strings = {
 		'tos.title':'Termos do Serviço',
 
 
-		'home.title':'Carteira Offline BTCBIN',         
+		'home.title':'Carteira Offline BTCBIN',
 		'about.link':'Sobre',
 		'settings':'Configurações',
 		'generate':'Gerar',
